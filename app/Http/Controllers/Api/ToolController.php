@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Models\Docum;
+use App\Models\Tech;
+use App\Models\Type;
+use App\Models\Area;
+use App\Models\Owner;
 use App\Models\Family;
 use App\Models\File;
 use App\Models\Group;
@@ -26,15 +31,11 @@ class ToolController extends Controller
                 return [
                     'id' => $tool->id,
                     'item' => $tool->item,
-                    'description' => $tool->description,
-                    'measurement' => $tool->measurement,
-                    'group' => $tool->group,
-                    'family' => $tool->family,
-                    'brand' => $tool->brand,
-                    'model' => $tool->model,
-                    'serial_number' => $tool->serial_number,
-                    'calibration_expiration' => $tool->calibration_expiration,
-                    'has_validation' => $tool->has_validation
+                    'docum' => $tool->docum,
+                    'tech' => $tool->tech,
+                    'type' => $tool->type,
+                    'area' => $tool->area,
+                    'owner' => $tool->owner
                 ];
             })
         );
@@ -44,23 +45,18 @@ class ToolController extends Controller
         return response()->json([
             'id' => $tool->id,
             'item' => $tool->item,
+            'docum' => $tool->docum,
+            'tech' => $tool->tech,
+            'type' => $tool->type,
+            'area' => $tool->area,
+            'owner' => $tool->owner,
+            'available' => $tool->available,
+            'code' => $tool->code,
             'description' => $tool->description,
-            'measurement' => $tool->measurement,
-            'group' => $tool->group,
-            'family' => $tool->family,
-            'brand' => $tool->brand,
-            'model' => $tool->model,
-            'serial_number' => $tool->serial_number,
-            'calibration_expiration' => $tool->calibration_expiration,
-            'has_validation' => $tool->has_validation,
-            'main_localization' => $tool->main_localization,
-            'shelf_localization' => $tool->shelf_localization,
-            'shelf' => $tool->shelf,
-            'user' => $tool->user,
-            'min_stock' => $tool->min_stock,
-            'quantity' => $tool->quantity,
-            'dispatchable' => $tool->dispatchable,
-            'comments' => $tool->comments,
+            'revision' => $tool->revision,
+            'author' => $tool->author,
+            'language' => $tool->language,
+            'year' => $tool->year,
             'files' => $tool->files->map(static function(File $file) {
                 return $file->path;
             })
@@ -113,11 +109,13 @@ class ToolController extends Controller
     public function update(Request $request, Tool $tool) {
         DB::beginTransaction();
         try {
-            $group = $this->getGroup($request->group);
-            $family = $this->getFamily($request->family);
-            $brand = $this->getBrand($request->brand);
+            $docum = $this->getDocum($request->docum);
+            $tech = $this->getTech($request->tech);
+            $type = $this->getType($request->type);
+            $area = $this->getArea($request->area);
+            $owner = $this->getOwner($request->owner);
             $oldTool = json_encode($this->getValues($tool->toArray(), $tool));
-            if ($request->main_localization !== $tool->main_localization) {
+            if ($request->author !== $tool->author) {
                 $tool->update([ 'quantity' => $tool->quantity - $request->movingQuantity ]);
                 $request->quantity = $request->movingQuantity;
                 $tool = $this->createTool($request);
@@ -130,23 +128,18 @@ class ToolController extends Controller
                 ]);
             } else {
                 $tool->update([
+                    'docum_id' => $docum->id ?? null,
+                    'tech_id' => $tech->id ?? null,
+                    'type_id' => $type->id ?? null,
+                    'area_id' => $area->id ?? null,
+                    'owner_id' => $owner->id ?? null,
+                    'available' => $request->available,
+                    'code' => $request->code,
                     'description' => $request->description,
-                    'group_id' => $group->id ?? null,
-                    'family_id' => $family->id ?? null,
-                    'brand_id' => $brand->id ?? null,
-                    'model' => $request->model,
-                    'serial_number' => $request->serial,
-                    'size' => $request->size,
-                    'calibration_expiration' => $request->has_validation ? $request->calibration_expiration : null,
-                    'has_validation' => $request->has_validation,
-                    'main_localization' => $request->main_localization,
-                    'shelf_localization' => $request->shelf_localization,
-                    'shelf' => $request->shelf,
-                    'measurement' => $request->measurement,
-                    'min_stock' => $request->min_stock,
-                    'quantity' => $request->quantity,
-                    'comments' => $request->comments,
-                    'dispatchable' => $request->dispatchable
+                    'revision' => $request->revision,
+                    'author' => $request->author,
+                    'language' => $request->language,
+                    'year' => $request->year
                 ]);
                 $oldValues = $tool->getChanges();
                 if (count($oldValues) > 0) {
@@ -170,41 +163,37 @@ class ToolController extends Controller
     }
 
     private function createTool(Request $request) {
-        $group = $this->getGroup($request->group);
-        $family = $this->getFamily($request->family);
-        $brand = $this->getBrand($request->brand);
+        $docum = $this->getDocum($request->docum);
+        $tech = $this->getTech($request->tech);
+        $type = $this->getType($request->type);
+        $area = $this->getArea($request->area);
+        $owner = $this->getOwner($request->owner);
         $tool = $request->user()->tools()->create([
+            'docum_id' => $docum->id ?? null,
+            'tech_id' => $tech->id ?? null,
+            'type_id' => $type->id ?? null,
+            'area_id' => $area->id ?? null,
+            'owner_id' => $owner->id ?? null,
+            'available' => $request->available,
+            'code' => $request->code,
             'description' => $request->description,
-            'group_id' => $group->id ?? null,
-            'family_id' => $family->id ?? null,
-            'brand_id' => $brand->id ?? null,
-            'model' => $request->model,
-            'serial_number' => $request->serial,
-            'size' => $request->size,
-            'calibration_expiration' => $request->has_validation ? $request->calibration_expiration : null,
-            'has_validation' => $request->has_validation,
-            'main_localization' => $request->main_localization,
-            'shelf_localization' => $request->shelf_localization,
-            'shelf' => $request->shelf,
-            'measurement' => $request->measurement,
-            'min_stock' => $request->min_stock,
-            'quantity' => $request->quantity,
-            'comments' => $request->comments,
-            'dispatchable' => $request->dispatchable
+            'revision' => $request->revision,
+            'author' => $request->author,
+            'language' => $request->language,
+            'year' => $request->year
         ]);
         $tool->update([
-            'item' => sprintf('AAA%04d', $tool->id)
+            'item' => sprintf('DTR%04d', $tool->id)
         ]);
         return $tool->refresh();
     }
 
     private function getValues($values, Tool $tool) {
 //        dd($values, $tool);
-        $specialAttributes = ['group_id' => 'group','family_id' => 'family','brand_id' => 'brand'];
-        $names = ['item' => 'Item','description' => 'Descripcion','group_id' => 'Sub Grupo','family_id' => 'Familia','brand_id' => 'Marca',
-            'model' => 'Modelo','serial_number' => 'Numero de serie','calibration_expiration' => 'Expiracion de calibracion','dispatchable' => 'Despachable',
-            'has_validation' => 'Sujeto a validacion', 'main_localization' => 'Localizacion principal', 'shelf_localization' => 'Localizacion de estante', 'shelf' => 'Estante',
-            'measurement' => 'Medida', 'min_stock' => 'Stock minimo', 'quantity' => 'Cantidad', 'comments' => 'Comentarios'];
+        $specialAttributes = ['docum_id' => 'docum','tech_id' => 'tech','type_id' => 'type','area_id' => 'area','owner_id' => 'owner'];
+        $names = ['item' => 'Item','docum_id' => 'Tipo de documento','tech_id' => 'Tecnologia asociada','type_id' => 'Tipo de archivo','area_id' => 'Area asociada','owner_id' => 'Propietario',
+            'available' => 'Disponible','code' => 'Codigo','description' => 'Descripcion','revision' => 'Revision',
+            'author' => 'Autor', 'language' => 'Idioma', 'year' => 'Año de publicacion'];
         $data = array();
         foreach (array_keys($values) as $key) {
             if (array_key_exists($key, $specialAttributes)) {
@@ -220,26 +209,23 @@ class ToolController extends Controller
         return [
             'id' => $tool->id,
             'item' => $tool->item,
+            'docum' => $tool->docum,
+            'tech' => $tool->tech,
+            'type' => $tool->type,
+            'area' => $tool->area,
+            'owner' => $tool->owner,
+            'available' => $tool->available,
+            'code' => $tool->code,
             'description' => $tool->description,
-            'measurement' => $tool->measurement,
-            'group' => $tool->group,
-            'family' => $tool->family,
-            'brand' => $tool->brand,
-            'model' => $tool->model,
-            'serial_number' => $tool->serial_number,
-            'calibration_expiration' => $tool->calibration_expiration,
-            'has_validation' => $tool->has_validation,
-            'main_localization' => $tool->main_localization,
-            'shelf_localization' => $tool->shelf_localization,
-            'shelf' => $tool->shelf,
-            'user' => $tool->user,
-            'min_stock' => $tool->min_stock,
-            'quantity' => $tool->quantity
+            'revision' => $tool->revision,
+            'author' => $tool->author,
+            'language' => $tool->language,
+            'year' => $tool->year
         ];
     }
 
     public function search(Request $request) {
-        $especialKeys = ['group','brand','family','user'];
+        $especialKeys = ['docum','tech','type','area','owner','user'];
         $filters = $request->keys();
         $query = Tool::query();
         foreach($filters as $filter) {
@@ -259,41 +245,67 @@ class ToolController extends Controller
         return response()->json($data);
     }
 
-    private function getGroup($data)
+    private function getDocum($data)
     {
         if (is_null($data)) {
             return null;
         }
         if (is_array($data)) {
-            return Group::find($data['id']);
+            return Docum::find($data['id']);
         }
-        return Group::where('name', $data)->firstOrCreate([
+        return Docum::where('name', $data)->firstOrCreate([
             'name' => $data
         ]);
     }
 
-    private function getFamily($data)
+    private function getTech($data)
     {
         if (is_null($data)) {
             return null;
         }
         if (is_array($data)) {
-            return Family::find($data['id']);
+            return Tech::find($data['id']);
         }
-        return Family::where('name', $data)->firstOrCreate([
+        return Tech::where('name', $data)->firstOrCreate([
             'name' => $data
         ]);
     }
 
-    private function getBrand($data)
+    private function getType($data)
     {
         if (is_null($data)) {
             return null;
         }
         if (is_array($data)) {
-            return Brand::find($data['id']);
+            return Type::find($data['id']);
         }
-        return Brand::where('name', $data)->firstOrCreate([
+        return Type::where('name', $data)->firstOrCreate([
+            'name' => $data
+        ]);
+    }
+
+    private function getArea($data)
+    {
+        if (is_null($data)) {
+            return null;
+        }
+        if (is_array($data)) {
+            return Area::find($data['id']);
+        }
+        return Area::where('name', $data)->firstOrCreate([
+            'name' => $data
+        ]);
+    }
+
+    private function getOwner($data)
+    {
+        if (is_null($data)) {
+            return null;
+        }
+        if (is_array($data)) {
+            return Owner::find($data['id']);
+        }
+        return Owner::where('name', $data)->firstOrCreate([
             'name' => $data
         ]);
     }
