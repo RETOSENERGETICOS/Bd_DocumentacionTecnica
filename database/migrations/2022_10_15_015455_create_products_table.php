@@ -14,43 +14,53 @@ class CreateProductsTable extends Migration
     public function up()
     {
 
-        Schema::create('groups', static function(Blueprint $table) {
+        Schema::create('docums', static function(Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
         });
 
-        Schema::create('families', static function(Blueprint $table) {
+        Schema::create('techs', static function(Blueprint $table) {
            $table->id();
            $table->string('name');
            $table->timestamps();
         });
 
-        Schema::create('brands', static function(Blueprint $table) {
+        Schema::create('types', static function(Blueprint $table) {
            $table->id();
            $table->string('name');
            $table->timestamps();
         });
+
+        Schema::create('areas', static function(Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+
+        Schema::create('owners', static function(Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+
 
         Schema::create('tools', function (Blueprint $table) {
             $table->id();
             $table->string('item')->nullable();
-            $table->string('description');
-            $table->foreignId('group_id')->nullable()->constrained();
-            $table->foreignId('family_id')->constrained();
-            $table->foreignId('brand_id')->constrained();
-            $table->string('model')->nullable();
-            $table->string('serial_number')->unique()->nullable();
-            $table->date('calibration_expiration')->nullable();
-            $table->boolean('dispatchable')->default(false);
-            $table->boolean('has_validation')->comment('sujeto a validacion')->nullable();
-            $table->string('main_localization');
-            $table->string('shelf_localization')->nullable();
-            $table->string('shelf')->nullable();
-            $table->string('measurement');
+            $table->foreignId('docum_id')->nullable()->constrained();
+            $table->foreignId('tech_id')->constrained();
+            $table->foreignId('type_id')->constrained();
+            $table->foreignId('area_id')->constrained();
+            $table->foreignId('owner_id')->constrained();
+            $table->boolean('available')->default(false);
+            $table->string('code');
+            $table->string('description')->nullable();
+            $table->string('revision');
+            $table->string('author');
+            $table->string('language')->nullable();
+            $table->decimal('year');
             $table->foreignId('user_id')->constrained();
-            $table->decimal('min_stock')->nullable();
-            $table->decimal('quantity');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -64,8 +74,10 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tools');
-        Schema::dropIfExists('groups');
-        Schema::dropIfExists('families');
-        Schema::dropIfExists('brands');
+        Schema::dropIfExists('docums');
+        Schema::dropIfExists('techs');
+        Schema::dropIfExists('types');
+        Schema::dropIfExists('areas');
+        Schema::dropIfExists('owners');
     }
 }

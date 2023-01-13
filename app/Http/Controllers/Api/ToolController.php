@@ -192,7 +192,7 @@ class ToolController extends Controller
 //        dd($values, $tool);
         $specialAttributes = ['docum_id' => 'docum','tech_id' => 'tech','type_id' => 'type','area_id' => 'area','owner_id' => 'owner'];
         $names = ['item' => 'Item','docum_id' => 'Tipo de documento','tech_id' => 'Tecnologia asociada','type_id' => 'Tipo de archivo','area_id' => 'Area asociada','owner_id' => 'Propietario',
-            'available' => 'Disponible','code' => 'Codigo','description' => 'Descripcion','revision' => 'Revision',
+            'available' => 'Disponible','code' => 'Codigo','description' => 'Descripcion','revision' => 'N de revision',
             'author' => 'Autor', 'language' => 'Idioma', 'year' => 'Año de publicacion'];
         $data = array();
         foreach (array_keys($values) as $key) {
