@@ -13,7 +13,7 @@
         <v-data-table :headers="headers" :items="items" show-select v-model="selected" :loading="loading">
             <template v-slot:top>
                 <v-toolbar flat>
-                    <v-toolbar-title>Herramientas</v-toolbar-title>
+                    <v-toolbar-title>Documentacion</v-toolbar-title>
                     <v-divider class="mx-4" inset vertical></v-divider>
                     <v-spacer></v-spacer>
                     <v-btn color="error" :disabled="selected.length === 0" @click="dialog = true">Eliminar</v-btn>
