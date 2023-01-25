@@ -60,7 +60,7 @@
                         <v-text-field v-model="tool.year" label="Año de publicacion"></v-text-field>
                     </div>
                     <div class="form-row">
-                        <file-pond name="documents" ref="documents" label-idle="Nombre archivo" accepted-file-types="application/pdf" @processfile="onProcessFile" :allow-multiple="true"></file-pond>
+                        <file-pond name="documents" ref="documents" label-idle="Archivos" accepted-file-types="application/pdf" @processfile="onProcessFile" :allow-multiple="true"></file-pond>
                     </div>
                 </div>
             </div>

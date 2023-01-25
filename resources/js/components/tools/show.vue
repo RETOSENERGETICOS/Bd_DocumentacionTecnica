@@ -113,7 +113,6 @@ export default {
                     area: this.tool.area,
                     owner: this.tool.owner,
                     available: this.tool.available
-    
                 }
                 this.$emit('updated', newItem)
                 this.show = false
