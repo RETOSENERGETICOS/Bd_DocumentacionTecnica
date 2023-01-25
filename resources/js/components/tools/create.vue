@@ -52,6 +52,7 @@
                         <v-text-field v-model="tool.author" label="Autor"></v-text-field>
                     </div>
                 </div>
+                 <div class="form-column">
                     <div class="form-row">
                         <v-text-field v-model="tool.language" label="Idioma" :rules="[rules.required]"></v-text-field>
                     </div>
