@@ -42,10 +42,10 @@ export default {
         loading: false,
         search: null,
         headers: [],
-        specialKeys: ['group','family','brand'],
+        specialKeys: ['docum','tech','type','area','owner'],
         historyHeaders: [
             {text: 'Item', value: 'tool.item'},
-            {text: 'Familia', value: 'family.name'},
+            {text: 'Tipo de documento', value: 'docum.name'},
             {text: 'Fecha', value: 'created_at'},
             {text: 'Ejecutor', value: 'user.email'},
             {text: 'Actividad', value: 'comment'},

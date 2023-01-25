@@ -41,15 +41,15 @@ export default {
         loading: false,
         headers: [
             {text: 'ITEM', value: 'item'},
+            {text: 'Tipo de documento', value: 'docum.name'},
+            {text: 'Tecnologia asociada', value: 'tech.name'},
+            {text: 'Tipo de archivo', value: 'type.name'},
+            {text: 'Area asociada', value: 'area.name'},
+            {text: 'Propietario', value: 'owner.name'},
+            {text: 'Disponible', value: 'available'},
+            {text: 'Codigo', value: 'code'},
             {text: 'Descripcion', value: 'description'},
-            {text: 'Dimension Principal', value: 'measurement'},
-            {text: 'Subgrupo', value: 'group.name'},
-            {text: 'Familia', value: 'family.name'},
-            {text: 'Marca', value: 'brand.name'},
-            {text: 'Modelo', value: 'model'},
-            {text: '# Serie', value: 'serial_number'},
-            {text: 'Vencimiento de calibracion', value: 'calibration_expiration'},
-            {text: 'Sujeto a validacion', value: 'has_validation'},
+            {text: 'N de revision', value: 'revision'},
             {text: '', value: 'edit'}
         ]
     }),

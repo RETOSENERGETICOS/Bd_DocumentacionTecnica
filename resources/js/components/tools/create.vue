@@ -15,75 +15,51 @@
             <div class="form-container">
                 <div class="form-column">
                     <div class="form-row">
-                        <v-textarea v-model="tool.description" label="Descripcion" rows="1" :rules="[rules.required]"></v-textarea>
+                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.docum" label="Tipo de documento" :items="docums" item-text="name" clearable item-value="name"></v-combobox>
+                        <v-select v-else v-model.trim="tool.docum" label="Tipo de documento" :items="docums" item-text="name" clearable item-value="name"></v-select>
                     </div>
                     <div class="form-row">
-                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.group" label="Sub Grupo" :items="groups" item-text="name" clearable item-value="name"></v-combobox>
-                        <v-select v-else v-model.trim="tool.group" label="Sub Grupo" :items="groups" item-text="name" clearable item-value="name"></v-select>
+                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.tech" label="Tecnologia asociada" :items="techs" item-text="name" clearable item-value="name"></v-combobox>
+                        <v-select v-else v-model.trim="tool.tech" label="Sub Grupo" :items="techs" item-text="name" clearable item-value="name"></v-select>
                     </div>
                     <div class="form-row">
-                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.family" label="Familia" :items="families" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-combobox>
-                        <v-select v-else v-model.trim="tool.family" label="Familia" :items="families" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-select>
+                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.type" label="Tipo de archivo" :items="types" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-combobox>
+                        <v-select v-else v-model.trim="tool.type" label="Tipo de archivo" :items="types" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-select>
                     </div>
                     <div class="form-row">
-                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.brand" label="Marca" :items="brands" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-combobox>
-                        <v-select v-else v-model.trim="tool.brand" label="Marca" :items="brands" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-select>
-                    </div>
-                </div>
-                <div class="form-column">
-                    <div class="form-row">
-                        <v-text-field v-model="tool.model" label="Modelo"></v-text-field>
+                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.area" label="Area asociada" :items="areas" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-combobox>
+                        <v-select v-else v-model.trim="tool.area" label="Area asociada" :items="areas" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-select>
                     </div>
                     <div class="form-row">
-                        <v-text-field v-model="tool.serial" label="N de Serie"></v-text-field>
-                    </div>
-                    <div class="form-row">
-                        <p>Sujeto a validacion</p>
-                        <v-radio-group v-model="tool.has_validation" mandatory>
-                            <v-radio label="Si" :value="true"></v-radio>
-                            <v-radio label="No" :value="false"></v-radio>
-                        </v-radio-group>
-                    </div>
-                    <div class="form-row">
-                        <v-menu ref="datePickerMenu" v-model="menu" :close-on-content-click="false" offset-y min-width="auto">
-                            <template v-slot:activator="{on, attrs}">
-                                <v-text-field v-model="tool.calibration_expiration" label="Vencimiento de calibracion" v-on="on" v-bind="attrs" :disabled="!tool.has_validation"></v-text-field>
-                            </template>
-                            <v-date-picker v-model="tool.calibration_expiration" label="Vencimiento de calibracion" no-title></v-date-picker>
-                        </v-menu>
-                    </div>
-                    <div class="form-row">
-                        <v-text-field v-model="tool.main_localization" label="Localizacion principal" :rules="[rules.required]"></v-text-field>
-                    </div>
-                    <div class="form-row">
-                        <v-text-field v-model="tool.shelf_localization" label="Localizacion de estante"></v-text-field>
-                    </div>
-                    <div class="form-row">
-                        <v-text-field v-model="tool.shelf" label="# Estante"></v-text-field>
+                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.owner" label="Propietario" :items="owners" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-combobox>
+                        <v-select v-else v-model.trim="tool.owner" label="Propietario" :items="owners" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-select>
                     </div>
                 </div>
                 <div class="form-column">
                     <div class="form-row">
-                        <p>Despachable</p>
-                        <v-radio-group mandatory>
-                            <v-radio label="Si" :value="true"></v-radio>
-                            <v-radio label="No" :value="false"></v-radio>
-                        </v-radio-group>
+                        <v-text-field v-model="tool.available" label="Disponible"></v-text-field>
                     </div>
                     <div class="form-row">
-                        <v-text-field v-model.number="tool.quantity" label="Cantidad" :rules="[rules.required, v => v > 0 || 'Cantidad invalida']"></v-text-field>
+                        <v-text-field v-model="tool.code" label="Codigo"></v-text-field>
                     </div>
                     <div class="form-row">
-                        <v-text-field v-model="tool.measurement" label="Unidad de medida" :rules="[rules.required]"></v-text-field>
+                        <v-text-field v-model="tool.description" label="Descripcion" :rules="[rules.required]"></v-text-field>
                     </div>
                     <div class="form-row">
-                        <v-text-field v-model="tool.min_stock" label="Inventario minimo"></v-text-field>
+                        <v-text-field v-model="tool.revision" label="N de revision"></v-text-field>
                     </div>
                     <div class="form-row">
-                        <v-textarea v-model="tool.comments" label="Comentarios"></v-textarea>
+                        <v-text-field v-model="tool.author" label="Autor"></v-text-field>
+                    </div>
+                </div>
+                    <div class="form-row">
+                        <v-text-field v-model="tool.language" label="Idioma" :rules="[rules.required]"></v-text-field>
                     </div>
                     <div class="form-row">
-                        <file-pond name="documents" ref="documents" label-idle="Archivos" accepted-file-types="application/pdf" @processfile="onProcessFile" :allow-multiple="true"></file-pond>
+                        <v-text-field v-model="tool.year" label="Año de publicacion"></v-text-field>
+                    </div>
+                    <div class="form-row">
+                        <file-pond name="documents" ref="documents" label-idle="Nombre archivo" accepted-file-types="application/pdf" @processfile="onProcessFile" :allow-multiple="true"></file-pond>
                     </div>
                 </div>
             </div>
@@ -108,26 +84,25 @@ export default {
         menu: false,
         valid: false,
         rules : { required: required },
-        groups: [],
-        families: [],
-        brands: [],
+        docums: [],
+        techs: [],
+        types: [],
+        areas: [],
+        owners: [],
         tool: {
+            docum: null,
+            tech: null,
+            type: null,
+            area: null,
+            owner: null,
+            available: null,
+            code: null,
             description: null,
-            group: null,
-            family: null,
-            brand: null,
-            model: null,
-            serial: null,
-            calibration_expiration: null,
-            has_validation: false,
-            main_localization: null,
-            shelf_localization: null,
-            shelf: null,
-            measurement: null,
-            min_stock: null,
-            quantity: null,
-            documents: [],
-            comments: null
+            revision: null,
+            author: null,
+            language: null,
+            year: null,
+            documents: []
         }
     }),
     methods: {
@@ -161,22 +136,19 @@ export default {
         },
         clearForm() {
             this.tool = {
+                docum: null,
+                tech: null,
+                type: null,
+                area: null,
+                owner: null,
+                available: null,
+                code: null,
                 description: null,
-                group: null,
-                family: null,
-                brand: null,
-                model: null,
-                serial: null,
-                calibrationExpiration: null,
-                hasValidation: false,
-                mainLocalization: null,
-                shelfLocalization: null,
-                shelf: null,
-                measurement: null,
-                minStock: null,
-                quantity: null,
-                documents: [],
-                comments: null
+                revision: null,
+                author: null,
+                language: null,
+                year: null,
+                documents: []
             }
             this.$refs.documents.removeFiles()
         }
@@ -199,9 +171,11 @@ export default {
                 }
             }
         })
-        await axios.get('/api/groups', getToken()).then(response => this.groups =  response.data )
-        await axios.get('/api/families', getToken()).then(response => this.families = response.data)
-        await axios.get('/api/brands', getToken()).then(response => this.brands = response.data)
+        await axios.get('/api/docums', getToken()).then(response => this.docums =  response.data )
+        await axios.get('/api/techs', getToken()).then(response => this.techs = response.data)
+        await axios.get('/api/types', getToken()).then(response => this.types = response.data)
+        await axios.get('/api/areas', getToken()).then(response => this.areas = response.data)
+        await axios.get('/api/owners', getToken()).then(response => this.owners = response.data)
         this.loading = false
     },
     components: {

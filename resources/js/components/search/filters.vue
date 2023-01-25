@@ -15,42 +15,22 @@
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="4" v-if="filters.group.active"><v-select v-model="filter.group" label="Sub Grupo" :items="groups" item-text="name" return-object clearable></v-select></v-col>
-                    <v-col cols="4" v-if="filters.brand.active"><v-select v-model="filter.brand" label="Marca" :items="brands" item-text="name" return-object clearable></v-select></v-col>
-                    <v-col cols="4" v-if="filters.family.active"><v-select v-model="filter.family" label="Familia" :items="families" item-text="name" return-object clearable></v-select></v-col>
-                    <v-col cols="4" v-if="filters.hasValidation.active">
-                        <p>Sujeto a validacion</p>
-                        <v-radio-group v-model="filter.hasValidation" mandatory row>
-                            <v-radio label="Si" :value="1"></v-radio>
-                            <v-radio label="No" :value="0"></v-radio>
-                        </v-radio-group>
-                    </v-col>
-                    <v-col cols="4" v-if="filters.mainLocalization.active"><v-text-field v-model="filter.mainLocalization" label="Localizacion principal" clearable></v-text-field></v-col>
-                    <v-col cols="4" v-if="filters.shelfLocalization.active"><v-text-field v-model="filter.shelfLocalization" label="Localizacion de estante" clearable></v-text-field></v-col>
-                    <v-col cols="4" v-if="filters.shelf.active"><v-text-field v-model="filter.shelf" label="Estante" clearable></v-text-field></v-col>
-                    <v-col cols="4" v-if="filters.measurement.active"><v-text-field v-model="filter.measurement" label="Medida" clearable></v-text-field></v-col>
-                    <v-col cols="4" v-if="filters.dispatchable.active">
-                        <p>Despachable</p>
-                        <v-radio-group v-model="filter.dispatchable" mandatory row>
-                            <v-radio label="Si" :value="1"></v-radio>
-                            <v-radio label="No" :value="0"></v-radio>
-                        </v-radio-group>
-                    </v-col>
-                    <v-col cols="4" v-if="filters.minStock.active"><v-text-field v-model="filter.minStock" label="Inventario minimo" clearable></v-text-field></v-col>
-                    <v-col cols="4" v-if="filters.quantity.active"><v-text-field v-model.number="filter.quantity" label="Cantidad" clearable></v-text-field></v-col>
+                    <v-col cols="4" v-if="filters.docum.active"><v-select v-model="filter.docum" label="Tipo de documento" :items="docums" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.tech.active"><v-select v-model="filter.tech" label="Tecnologia asociada" :items="techs" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.type.active"><v-select v-model="filter.type" label="Tipo de archivo" :items="types" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.area.active"><v-select v-model="filter.area" label="Area asociada" :items="areas" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.owner.active"><v-select v-model="filter.owner" label="Propietario" :items="owners" item-text="name" return-object clearable></v-select></v-col>
+
+                    <v-col cols="4" v-if="filters.available.active"><v-text-field v-model="filter.available" label="Disponible" clearable></v-text-field></v-col>
+                    <v-col cols="4" v-if="filters.code.active"><v-text-field v-model="filter.code" label="Codigo" clearable></v-text-field></v-col>
                     <v-col cols="4" v-if="filters.description.active"><v-text-field v-model="filter.description" label="Descripcion" clearable></v-text-field></v-col>
-                    <v-col cols="4" v-if="filters.model.active"><v-text-field v-model="filter.model" label="Modelo" clearable></v-text-field></v-col>
-                    <v-col cols="4" v-if="filters.serialNumber.active"><v-text-field v-model="filter.serialNumber" label="Serie" clearable></v-text-field></v-col>
+                    <v-col cols="4" v-if="filters.revision.active"><v-text-field v-model="filter.revision" label="Revision" clearable></v-text-field></v-col>
+                   
+                    <v-col cols="4" v-if="filters.author.active"><v-text-field v-model="filter.author" label="Autor" clearable></v-text-field></v-col>
+                    <v-col cols="4" v-if="filters.language.active"><v-text-field v-model="filter.language" label="Idioma" clearable></v-text-field></v-col>
+                    <v-col cols="4" v-if="filters.year.active"><v-text-field v-model="filter.year" label="Año de publicacion" clearable></v-text-field></v-col>
                     <v-col cols="4" v-if="filters.item.active"><v-text-field v-model="filter.item" label="Item" clearable></v-text-field></v-col>
                     <v-col cols="4" v-if="filters.user.active"><v-select v-model="filter.user" label="Usuario" :items="users" item-text="email" return-object clearable></v-select></v-col>
-                    <v-col cols="4" v-if="filters.calibrationExpiration.active">
-                        <v-menu ref="datePickerMenu" v-model="menu" :close-on-content-click="false" offset-y min-width="auto">
-                            <template v-slot:activator="{on, attrs}">
-                                <v-text-field v-model="filter.calibrationExpiration" label="Vencimiento de calibracion" v-on="on" v-bind="attrs"></v-text-field>
-                            </template>
-                            <v-date-picker v-model="filter.calibrationExpiration" label="Vencimiento de calibracion" no-title></v-date-picker>
-                        </v-menu>
-                    </v-col>
                 </v-row>
             </v-expansion-panel-content>
         </v-expansion-panel>
@@ -66,33 +46,32 @@ export default {
     name: "filters",
     data: () => ({
         panel: 0,
-        groups: [{id: 0, name: 'TODOS'}],
-        brands: [{id: 0, name: 'TODOS'}],
-        families: [{id: 0, name: 'TODOS'}],
+        docums: [{id: 0, name: 'TODOS'}],
+        techs: [{id: 0, name: 'TODOS'}],
+        types: [{id: 0, name: 'TODOS'}],
+        areas: [{id: 0, name: 'TODOS'}],
+        owners: [{id: 0, name: 'TODOS'}],
         users: [{id: 0, email: 'TODOS'}],
         menu: false,
         filter: {
-            group: null,
-            brand: null,
-            family: null,
-            hasValidation: false,
-            mainLocalization: null,
-            shelfLocalization: null,
-            shelf: null,
-            measurement: null,
-            dispatchable: false,
-            minStock: 0,
-            quantity: 0,
+            docum: null,
+            tech: null,
+            type: null,
+            area: null,
+            owner: null,
+            available: null,
+            code: null,
             description: null,
-            model: null,
-            serialNumber: null,
+            revision: null,
+            author: null,
+            language: null,
+            year: null,
             item: null,
             user: null,
-            calibrationExpiration: null,
         },
         historyHeaders: [
             {text: 'Item', value: 'tool.item'},
-            {text: 'Familia', value: 'family.name'},
+            {text: 'Tipo de documento', value: 'docum.name'},
             {text: 'Fecha', value: 'created_at'},
             {text: 'Ejecutor', value: 'user.email'},
             {text: 'Actividad', value: 'comment'},
@@ -138,20 +117,30 @@ export default {
         ...mapGetters('filters', ['filters','activeFilters'])
     },
     created() {
-        axios.get('/api/groups', getToken())
+        axios.get('/api/docums', getToken())
             .then(response => {
-                this.groups = this.groups.concat(response.data)
-                this.filter.group = this.groups[0]
+                this.docums = this.docums.concat(response.data)
+                this.filter.docum = this.docums[0]
             })
-        axios.get('/api/brands', getToken())
+        axios.get('/api/techs', getToken())
             .then(response => {
-                this.brands = this.brands.concat(response.data)
-                this.filter.brand = this.brands[0]
+                this.techs = this.techs.concat(response.data)
+                this.filter.tech = this.techs[0]
             })
-        axios.get('/api/families', getToken())
+        axios.get('/api/types', getToken())
             .then(response => {
-                this.families = this.families.concat(response.data)
-                this.filter.family = this.families[0]
+                this.types = this.types.concat(response.data)
+                this.filter.type = this.types[0]
+            })
+        axios.get('/api/areas', getToken())
+            .then(response => {
+                this.areas = this.areas.concat(response.data)
+                this.filter.area = this.areas[0]
+            })
+        axios.get('/api/owners', getToken())
+            .then(response => {
+                this.owners = this.owners.concat(response.data)
+                this.filter.owner = this.owners[0]
             })
         axios.get('/api/users', getToken())
           .then(response => {

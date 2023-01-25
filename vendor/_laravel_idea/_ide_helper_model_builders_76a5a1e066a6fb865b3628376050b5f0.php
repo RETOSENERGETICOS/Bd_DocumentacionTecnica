@@ -3,10 +3,12 @@
 
 namespace LaravelIdea\Helper\App\Models {
 
-    use App\Models\Brand;
-    use App\Models\Family;
+    use App\Models\Docum;
+    use App\Models\Tech;
+    use App\Models\Type;
+    use App\Models\Area;
     use App\Models\File;
-    use App\Models\Group;
+    use App\Models\Owner;
     use App\Models\Log;
     use App\Models\Role;
     use App\Models\Tool;
