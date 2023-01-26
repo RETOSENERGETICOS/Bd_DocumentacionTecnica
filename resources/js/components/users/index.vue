@@ -5,7 +5,7 @@
         <v-data-table :headers="headers" :items="users" :loading="loading" @click:row="viewUser">
             <template v-slot:top>
                 <v-toolbar flat>
-                    <v-toolbar-title>Usuarios</v-toolbar-title>
+                    <v-toolbar-title>Usuarios/Users</v-toolbar-title>
                     <v-divider class="mx-4" inset vertical></v-divider>
                     <v-spacer></v-spacer>
                     <create @userCreated="userCreated"/>

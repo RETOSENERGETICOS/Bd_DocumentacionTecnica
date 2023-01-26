@@ -3,9 +3,9 @@
         <v-snackbar v-model="snackbar.active" :timeout="1500" :color="snackbar.color">{{ snackbar.message }}</v-snackbar>
         <v-dialog v-model="dialog" max-width="500px">
             <v-card>
-                <v-card-title>Desea eliminar los registros seleccionados?</v-card-title>
+                <v-card-title>¿Está usted seguro de eliminar?/Confirm?</v-card-title>
                 <v-card-actions>
-                    <v-btn color="success" @click.prevent="deleteTools">Eliminar</v-btn>
+                    <v-btn color="success" @click.prevent="deleteTools">Eliminar/Delete</v-btn>
                     <v-btn color="error">Cancelar</v-btn>
                 </v-card-actions>
             </v-card>
@@ -16,7 +16,7 @@
                     <v-toolbar-title>Documentacion</v-toolbar-title>
                     <v-divider class="mx-4" inset vertical></v-divider>
                     <v-spacer></v-spacer>
-                    <v-btn color="error" :disabled="selected.length === 0" @click="dialog = true">Eliminar</v-btn>
+                    <v-btn color="error" :disabled="selected.length === 0" @click="dialog = true">Eliminar/Delete</v-btn>
                 </v-toolbar>
             </template>
             <template #item.has_validation="{item}">{{ item.has_validation ? 'Si' : 'No' }}</template>

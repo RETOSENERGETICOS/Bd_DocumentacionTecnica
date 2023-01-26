@@ -11,7 +11,7 @@
                         <v-btn color="success" text @click.prevent="search">Aplicar filtros <v-icon>mdi-download</v-icon></v-btn>
                     </v-col>
                     <v-col>
-                        <v-btn color="cyan" text @click.prevent="history">Consultar Historial <v-icon>mdi-history</v-icon></v-btn>
+                        <v-btn color="cyan" text @click.prevent="history">Consultar Historial/History <v-icon>mdi-history</v-icon></v-btn>
                     </v-col>
                 </v-row>
                 <v-row>

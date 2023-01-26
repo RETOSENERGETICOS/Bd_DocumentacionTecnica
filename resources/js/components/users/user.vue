@@ -4,7 +4,7 @@
             <v-card>
                 <v-card-title>Eliminar usuario?</v-card-title>
                 <v-card-actions>
-                    <v-btn @click="deleteUser" color="success" text>Eliminar <v-icon>mdi-check</v-icon></v-btn>
+                    <v-btn @click="deleteUser" color="success" text>Eliminar/Delete<v-icon>mdi-check</v-icon></v-btn>
                     <v-btn @click="confirm = false" color="error" text>Cancelar <v-icon>mdi-cancel</v-icon></v-btn>
                 </v-card-actions>
             </v-card>
@@ -40,7 +40,7 @@
                 <v-btn v-if="!editing" color="warning" @click="beginEditing" text>Editar <v-icon>mdi-pencil</v-icon></v-btn>
                 <v-btn v-if="editing" color="success" @click.prevent="saveUser" :loading="loading" text>Guardar <v-icon>mdi-check</v-icon></v-btn>
                 <v-btn v-if="editing" color="warning" @click="resetUser" text>Cancelar <v-icon>mdi-reload</v-icon></v-btn>
-                <v-btn color="error" @click.prevent="confirm = true" :loading="loadingDelete" text>Eliminar <v-icon>mdi-trash-can</v-icon></v-btn>
+                <v-btn color="error" @click.prevent="confirm = true" :loading="loadingDelete" text>Eliminar/Delete<v-icon>mdi-trash-can</v-icon></v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>

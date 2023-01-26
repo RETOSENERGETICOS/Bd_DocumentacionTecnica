@@ -9,17 +9,17 @@
             </v-list-item>
             <v-divider></v-divider>
             <v-list dense nav>
-                <v-list-item-subtitle v-if="verifyAccess([1])">Administracion</v-list-item-subtitle>
+                <v-list-item-subtitle v-if="verifyAccess([1])">Administracion/Administration</v-list-item-subtitle>
                 <v-list-item link @click.prevent="goToRoute('users.index')" v-if="verifyAccess([1])">
                     <v-list-item-icon>
                         <v-icon>mdi-account-multiple</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
-                        <v-list-item-title>Usuarios</v-list-item-title>
+                        <v-list-item-title>Usuarios/Users</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
                 <v-divider v-if="verifyAccess([1])"></v-divider>
-                <v-list-item-subtitle>Base de datos</v-list-item-subtitle>
+                <v-list-item-subtitle>Base de datos/Data Base</v-list-item-subtitle>
                 <v-list-item v-for="(menu, i) in menus" :key="i" link @click="goToRoute(menu.routeName)" v-if="verifyAccess(menu.requiredRoles)">
                     <v-list-item-icon>
                         <v-icon>{{ menu.icon }}</v-icon>
@@ -32,7 +32,7 @@
                 <v-list-item @click.prevent="closeSession" link>
                     <v-list-item-icon><v-icon>mdi-exit-to-app</v-icon></v-list-item-icon>
                     <v-list-item-content>
-                        <v-list-item-title>Cerrar Sesion</v-list-item-title>
+                        <v-list-item-title>Cerrar Sesion/Log out</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
@@ -53,10 +53,10 @@ export default {
     name: "app",
     data: () => ({
         menus: [
-            { name: 'Agregar', icon: 'mdi-plus', routeName: 'tools.create', requiredRoles: [1,2] },
-            { name: 'Eliminar', icon: 'mdi-minus', routeName: 'tools.destroy', requiredRoles: [1,2] },
-            { name: 'Editar', icon: 'mdi-pencil', routeName: 'tools.edit', requiredRoles: [1,2] },
-            { name: 'Consultar', icon: 'mdi-magnify', routeName: 'search.index', requiredRoles: [] },
+            { name: 'Agregar/Add', icon: 'mdi-plus', routeName: 'tools.create', requiredRoles: [1,2] },
+            { name: 'Eliminar/Delete', icon: 'mdi-minus', routeName: 'tools.destroy', requiredRoles: [1,2] },
+            { name: 'Editar/Edit', icon: 'mdi-pencil', routeName: 'tools.edit', requiredRoles: [1,2] },
+            { name: 'Consultar/Look for', icon: 'mdi-magnify', routeName: 'search.index', requiredRoles: [] },
             // { name: 'Historial', icon: 'mdi-history', routeName: 'tools.history', requiredRoles: [1,2] }
         ]
     }),

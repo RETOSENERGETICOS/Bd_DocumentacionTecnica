@@ -2,21 +2,21 @@
     <div class="container">
         <v-snackbar v-model="snackbar" color="error" timeout="1500">Correo o contrase;a incorrectos</v-snackbar>
         <v-card>
-            <v-card-title class="text--center">Iniciar sesion</v-card-title>
+            <v-card-title class="text--center">Iniciar sesion/Log in</v-card-title>
             <v-card-text>
                 <v-form>
                     <v-row>
                         <v-col cols="12">
-                            <v-text-field v-model="email" label="Correo" prepend-inner-icon="mdi-account"></v-text-field>
+                            <v-text-field v-model="email" label="Correo/Email" prepend-inner-icon="mdi-account"></v-text-field>
                         </v-col>
                         <v-col cols="12">
-                            <v-text-field v-model="password" label="Contraseña" type="password" prepend-inner-icon="mdi-lock"></v-text-field>
+                            <v-text-field v-model="password" label="Contraseña/Password" type="password" prepend-inner-icon="mdi-lock"></v-text-field>
                         </v-col>
                     </v-row>
                 </v-form>
             </v-card-text>
             <v-card-actions>
-                <v-btn :loading="loading" @click.prevent="login" :disabled="loading">Iniciar sesion</v-btn>
+                <v-btn :loading="loading" @click.prevent="login" :disabled="loading">Enviar/Send</v-btn>
             </v-card-actions>
         </v-card>
     </div>
