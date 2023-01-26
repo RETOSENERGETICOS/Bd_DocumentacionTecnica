@@ -37,8 +37,6 @@ export default {
             { text: 'Propietario/Owner', value: 'owner.name' },
             { text: 'Disponible/Available', value: 'available' },
             { text: 'Codigo/Code', value: 'code' },
-            { text: 'Descripcion/Description', value: 'description' },
-            { text: 'N de revision/No revision', value: 'revision' },
             { text: '', value: 'edit' }
         ]
     }),
