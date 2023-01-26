@@ -15,52 +15,52 @@
             <div class="form-container">
                 <div class="form-column">
                     <div class="form-row">
-                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.docum" label="Tipo de documento" :items="docums" item-text="name" clearable item-value="name"></v-combobox>
-                        <v-select v-else v-model.trim="tool.docum" label="Tipo de documento" :items="docums" item-text="name" clearable item-value="name"></v-select>
+                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.docum" label="Tipo de documento/Document type" :items="docums" item-text="name" clearable item-value="name"></v-combobox>
+                        <v-select v-else v-model.trim="tool.docum" label="Tipo de documento/Document type" :items="docums" item-text="name" clearable item-value="name"></v-select>
                     </div>
                     <div class="form-row">
-                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.tech" label="Tecnologia asociada" :items="techs" item-text="name" clearable item-value="name"></v-combobox>
-                        <v-select v-else v-model.trim="tool.tech" label="Sub Grupo" :items="techs" item-text="name" clearable item-value="name"></v-select>
+                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.tech" label="Tecnologia asociada/Associated technology" :items="techs" item-text="name" clearable item-value="name"></v-combobox>
+                        <v-select v-else v-model.trim="tool.tech" label="Tecnologia asociada/Associated technology" :items="techs" item-text="name" clearable item-value="name"></v-select>
                     </div>
                     <div class="form-row">
-                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.type" label="Tipo de archivo" :items="types" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-combobox>
-                        <v-select v-else v-model.trim="tool.type" label="Tipo de archivo" :items="types" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-select>
+                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.type" label="Tipo de archivo/Type of file" :items="types" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-combobox>
+                        <v-select v-else v-model.trim="tool.type" label="Tipo de archivo/Type of file" :items="types" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-select>
                     </div>
                     <div class="form-row">
-                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.area" label="Area asociada" :items="areas" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-combobox>
-                        <v-select v-else v-model.trim="tool.area" label="Area asociada" :items="areas" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-select>
+                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.area" label="Area asociada/Associated area" :items="areas" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-combobox>
+                        <v-select v-else v-model.trim="tool.area" label="Area asociada/Associated area" :items="areas" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-select>
                     </div>
                     <div class="form-row">
-                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.owner" label="Propietario" :items="owners" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-combobox>
-                        <v-select v-else v-model.trim="tool.owner" label="Propietario" :items="owners" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-select>
+                        <v-combobox v-if="verifyAccess([1])" v-model.trim="tool.owner" label="Propietario/Owner" :items="owners" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-combobox>
+                        <v-select v-else v-model.trim="tool.owner" label="Propietario/Owner" :items="owners" item-text="name" :rules="[rules.required]" clearable item-value="name"></v-select>
                     </div>
                 </div>
                 <div class="form-column">
                     <div class="form-row">
-                        <v-text-field v-model="tool.available" label="Disponible"></v-text-field>
+                        <v-text-field v-model="tool.available" label="Disponible/Available"></v-text-field>
                     </div>
                     <div class="form-row">
-                        <v-text-field v-model="tool.code" label="Codigo"></v-text-field>
+                        <v-text-field v-model="tool.code" label="Codigo/Code"></v-text-field>
                     </div>
                     <div class="form-row">
-                        <v-text-field v-model="tool.description" label="Descripcion" :rules="[rules.required]"></v-text-field>
+                        <v-text-field v-model="tool.description" label="Descripcion/Description" :rules="[rules.required]"></v-text-field>
                     </div>
                     <div class="form-row">
-                        <v-text-field v-model="tool.revision" label="N de revision"></v-text-field>
+                        <v-text-field v-model="tool.revision" label="N de revision/No revision"></v-text-field>
                     </div>
                     <div class="form-row">
-                        <v-text-field v-model="tool.author" label="Autor"></v-text-field>
+                        <v-text-field v-model="tool.author" label="Autor/Author"></v-text-field>
                     </div>
                 </div>
                  <div class="form-column">
                     <div class="form-row">
-                        <v-text-field v-model="tool.language" label="Idioma" :rules="[rules.required]"></v-text-field>
+                        <v-text-field v-model="tool.language" label="Idioma/Lenguage" :rules="[rules.required]"></v-text-field>
                     </div>
                     <div class="form-row">
-                        <v-text-field v-model="tool.year" label="Año de publicacion"></v-text-field>
+                        <v-text-field v-model="tool.year" label="Año de publicacion/Year of publication"></v-text-field>
                     </div>
                     <div class="form-row">
-                        <file-pond name="documents" ref="documents" label-idle="Archivos" accepted-file-types="application/pdf" @processfile="onProcessFile" :allow-multiple="true"></file-pond>
+                        <file-pond name="documents" ref="documents" label-idle="Archivos/File" accepted-file-types="application/pdf" @processfile="onProcessFile" :allow-multiple="true"></file-pond>
                     </div>
                 </div>
             </div>
