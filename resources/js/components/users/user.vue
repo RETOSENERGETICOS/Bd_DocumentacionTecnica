@@ -23,7 +23,7 @@
             <v-card-text>
                 <v-row>
                     <v-col cols="6">
-                        <v-text-field v-model="user.email" label="Usuario" disabled></v-text-field>
+                        <v-text-field v-model="user.email" label="Usuario/User" disabled></v-text-field>
                     </v-col>
                     <v-col cols="6">
                         <v-select v-model="user.role" label="Tipo de usuario/Type of user" :items="roles" item-text="name" return-object :disabled="!editing"></v-select>

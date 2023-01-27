@@ -1,14 +1,14 @@
 <template>
     <v-expansion-panels v-model="panel">
         <v-expansion-panel>
-            <v-expansion-panel-header>Filtros</v-expansion-panel-header>
+            <v-expansion-panel-header>Filtros/Filters</v-expansion-panel-header>
             <v-expansion-panel-content>
                 <v-row>
                     <v-col>
                         <active-filters />
                     </v-col>
                     <v-col>
-                        <v-btn color="success" text @click.prevent="search">Aplicar filtros <v-icon>mdi-download</v-icon></v-btn>
+                        <v-btn color="success" text @click.prevent="search">Aplicar filtros/Apply field <v-icon>mdi-download</v-icon></v-btn>
                     </v-col>
                     <v-col>
                         <v-btn color="cyan" text @click.prevent="history">Consultar Historial/History <v-icon>mdi-history</v-icon></v-btn>
@@ -30,7 +30,7 @@
                     <v-col cols="4" v-if="filters.language.active"><v-text-field v-model="filter.language" label="Idioma" clearable></v-text-field></v-col>
                     <v-col cols="4" v-if="filters.year.active"><v-text-field v-model="filter.year" label="Año de publicacion" clearable></v-text-field></v-col>
                     <v-col cols="4" v-if="filters.item.active"><v-text-field v-model="filter.item" label="Item" clearable></v-text-field></v-col>
-                    <v-col cols="4" v-if="filters.user.active"><v-select v-model="filter.user" label="Usuario" :items="users" item-text="email" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.user.active"><v-select v-model="filter.user" label="Usuario/User" :items="users" item-text="email" return-object clearable></v-select></v-col>
                 </v-row>
             </v-expansion-panel-content>
         </v-expansion-panel>

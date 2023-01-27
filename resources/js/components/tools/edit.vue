@@ -8,7 +8,7 @@
                     <v-toolbar-title>Documentacion</v-toolbar-title>
                     <v-divider inset vertical class="mx-4"></v-divider>
                     <v-spacer></v-spacer>
-                    <v-text-field v-model="search" label="Buscar" hide-details></v-text-field>
+                    <v-text-field v-model="search" label="Buscar/Search" hide-details></v-text-field>
                 </v-toolbar>
             </template>
             <template #item.has_validation="{item}">{{ item.has_validation ? 'Si' : 'No' }}</template>

@@ -15,7 +15,7 @@
                 <v-form v-model="valid">
                     <v-row>
                         <v-col cols="4">
-                            <v-text-field v-model="user.email" label="Usuario" clearable :rules="[rules.required, rules.email]"></v-text-field>
+                            <v-text-field v-model="user.email" label="Usuario/User" clearable :rules="[rules.required, rules.email]"></v-text-field>
                         </v-col>
                         <v-col cols="4">
                             <v-select v-model="user.role" label="Tipo de usuario/Type of user" :items="roles" item-text="name" return-object clearable :rules="[rules.required]"></v-select>
