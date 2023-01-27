@@ -30,9 +30,9 @@ export default {
         loading: true,
         roles: [],
         headers: [
-            { text: 'Usuario', value: 'email' },
-            { text: 'Tipo', value: 'role' },
-            { text: 'Fecha de registro', value: 'created_at' }
+            { text: 'Correo/Email', value: 'email' },
+            { text: 'Tipo/Type', value: 'role' },
+            { text: 'Fecha de registro/Recorded date', value: 'created_at' }
         ],
         snackbar: {
             active: false,

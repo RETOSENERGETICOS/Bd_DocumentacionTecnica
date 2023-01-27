@@ -7,7 +7,7 @@
             </v-card>
         </v-dialog>
         <template v-slot:activator="{on, attrs}">
-            <v-btn v-on="on" v-bind="attrs" color="success" text>Registrar usuario</v-btn>
+            <v-btn v-on="on" v-bind="attrs" color="success" text>Registrar usuario/Add user</v-btn>
         </template>
         <v-card>
             <v-card-title>Crear usuario</v-card-title>
