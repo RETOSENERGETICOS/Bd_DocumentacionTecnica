@@ -10,7 +10,7 @@
             <v-btn v-on="on" v-bind="attrs" color="success" text>Registrar usuario/Add user</v-btn>
         </template>
         <v-card>
-            <v-card-title>Crear usuario</v-card-title>
+            <v-card-title>Crear usuario/Create user</v-card-title>
             <v-card-text>
                 <v-form v-model="valid">
                     <v-row>
@@ -18,7 +18,7 @@
                             <v-text-field v-model="user.email" label="Usuario" clearable :rules="[rules.required, rules.email]"></v-text-field>
                         </v-col>
                         <v-col cols="4">
-                            <v-select v-model="user.role" label="Tipo de usuario" :items="roles" item-text="name" return-object clearable :rules="[rules.required]"></v-select>
+                            <v-select v-model="user.role" label="Tipo de usuario/Type of user" :items="roles" item-text="name" return-object clearable :rules="[rules.required]"></v-select>
                         </v-col>
                         <v-col cols="4">
                             <v-text-field v-model="user.password" label="Contraseña/Password" type="password" clearable :rules="[rules.required]"></v-text-field>
@@ -27,8 +27,8 @@
                 </v-form>
             </v-card-text>
             <v-card-actions>
-                <v-btn color="success" :disabled="!valid" @click.prevent="register" text>Registrar</v-btn>
-                <v-btn color="error" @click="active = false" text>Cancelar</v-btn>
+                <v-btn color="success" :disabled="!valid" @click.prevent="register" text>Registrar/To register</v-btn>
+                <v-btn color="error" @click="active = false" text>Cancelar/Cancel</v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>

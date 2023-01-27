@@ -5,7 +5,7 @@
                 <v-card-title>Eliminar usuario?</v-card-title>
                 <v-card-actions>
                     <v-btn @click="deleteUser" color="success" text>Eliminar/Delete<v-icon>mdi-check</v-icon></v-btn>
-                    <v-btn @click="confirm = false" color="error" text>Cancelar <v-icon>mdi-cancel</v-icon></v-btn>
+                    <v-btn @click="confirm = false" color="error" text>Cancelar/Cancel <v-icon>mdi-cancel</v-icon></v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
@@ -26,7 +26,7 @@
                         <v-text-field v-model="user.email" label="Usuario" disabled></v-text-field>
                     </v-col>
                     <v-col cols="6">
-                        <v-select v-model="user.role" label="Tipo de usuario" :items="roles" item-text="name" return-object :disabled="!editing"></v-select>
+                        <v-select v-model="user.role" label="Tipo de usuario/Type of user" :items="roles" item-text="name" return-object :disabled="!editing"></v-select>
                     </v-col>
                     <v-col cols="6">
                         <p>Fecha de registro: {{ new Date(user.created_at).toLocaleDateString('es-MX') }}</p>
@@ -39,7 +39,7 @@
             <v-card-actions>
                 <v-btn v-if="!editing" color="warning" @click="beginEditing" text>Editar <v-icon>mdi-pencil</v-icon></v-btn>
                 <v-btn v-if="editing" color="success" @click.prevent="saveUser" :loading="loading" text>Guardar <v-icon>mdi-check</v-icon></v-btn>
-                <v-btn v-if="editing" color="warning" @click="resetUser" text>Cancelar <v-icon>mdi-reload</v-icon></v-btn>
+                <v-btn v-if="editing" color="warning" @click="resetUser" text>Cancelar/Cancel <v-icon>mdi-reload</v-icon></v-btn>
                 <v-btn color="error" @click.prevent="confirm = true" :loading="loadingDelete" text>Eliminar/Delete<v-icon>mdi-trash-can</v-icon></v-btn>
             </v-card-actions>
         </v-card>

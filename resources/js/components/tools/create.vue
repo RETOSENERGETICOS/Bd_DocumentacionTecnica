@@ -5,7 +5,7 @@
                 <v-card-title>Esta usted seguro?</v-card-title>
                 <v-card-actions>
                     <v-btn color="success" text @click.prevent="createTool">Guardar</v-btn>
-                    <v-btn color="error" text @click="active = false">Cancelar</v-btn>
+                    <v-btn color="error" text @click="active = false">Cancelar/Cancel</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>

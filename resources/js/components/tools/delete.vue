@@ -6,7 +6,7 @@
                 <v-card-title>¿Está usted seguro de eliminar?/Confirm?</v-card-title>
                 <v-card-actions>
                     <v-btn color="success" @click.prevent="deleteTools">Eliminar/Delete</v-btn>
-                    <v-btn color="error">Cancelar</v-btn>
+                    <v-btn color="error">Cancelar/Cancel</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
