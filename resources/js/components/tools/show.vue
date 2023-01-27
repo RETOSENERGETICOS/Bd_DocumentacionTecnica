@@ -17,21 +17,21 @@
                     <v-form v-model="valid">
                         <v-row>
                              <v-col cols="4">
-                                <v-combobox label="Tipo de documento v-model="tool.docum" item-text="name" :items="docums" item-value="name" disabled></v-combobox>
+                                <v-combobox label="Tipo de documento/Document type" v-model="tool.docum" item-text="name" :items="docums" item-value="name" disabled></v-combobox>
                             </v-col>
                              <v-col cols="4">
-                                <v-combobox label="Tecnologia asociada" v-model="tool.tech" item-text="name" :items="techs" item-value="name" disabled></v-combobox>
+                                <v-combobox label="Tecnologia asociada/Associated technology" v-model="tool.tech" item-text="name" :items="techs" item-value="name" disabled></v-combobox>
                             </v-col>
                              <v-col cols="4">
-                                <v-combobox label="Tipo de archivo" v-model="tool.type" item-text="name" :items="types" item-value="name" disabled></v-combobox>
+                                <v-combobox label="Tipo de archivo/Type of file" v-model="tool.type" item-text="name" :items="types" item-value="name" disabled></v-combobox>
                             </v-col>
                         </v-row>
                         <v-row>
                              <v-col cols="4">
-                                <v-combobox label="Area asociada" v-model="tool.area" item-text="name" :items="areas" item-value="name" disabled></v-combobox>
+                                <v-combobox label="Area asociada/Associated area" v-model="tool.area" item-text="name" :items="areas" item-value="name" disabled></v-combobox>
                             </v-col>
                              <v-col cols="4">
-                                <v-combobox label="Propietario" v-model="tool.owner" item-text="name" :items="owners" item-value="name" disabled></v-combobox>
+                                <v-combobox label="Propietario/Owner" v-model="tool.owner" item-text="name" :items="owners" item-value="name" disabled></v-combobox>
                             </v-col>
                             <v-col cols="4">
                                 <v-text-field label="Disponible" v-model="tool.available" :rules="[rules.required]"></v-text-field>

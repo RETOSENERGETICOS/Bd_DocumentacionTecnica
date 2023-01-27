@@ -15,11 +15,11 @@
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="4" v-if="filters.docum.active"><v-select v-model="filter.docum" label="Tipo de documento" :items="docums" item-text="name" return-object clearable></v-select></v-col>
-                    <v-col cols="4" v-if="filters.tech.active"><v-select v-model="filter.tech" label="Tecnologia asociada" :items="techs" item-text="name" return-object clearable></v-select></v-col>
-                    <v-col cols="4" v-if="filters.type.active"><v-select v-model="filter.type" label="Tipo de archivo" :items="types" item-text="name" return-object clearable></v-select></v-col>
-                    <v-col cols="4" v-if="filters.area.active"><v-select v-model="filter.area" label="Area asociada" :items="areas" item-text="name" return-object clearable></v-select></v-col>
-                    <v-col cols="4" v-if="filters.owner.active"><v-select v-model="filter.owner" label="Propietario" :items="owners" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.docum.active"><v-select v-model="filter.docum" label="Tipo de documento/Document type" :items="docums" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.tech.active"><v-select v-model="filter.tech" label="Tecnologia asociada/Associated technology" :items="techs" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.type.active"><v-select v-model="filter.type" label="Tipo de archivo/Type of file" :items="types" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.area.active"><v-select v-model="filter.area" label="Area asociada/Associated area" :items="areas" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.owner.active"><v-select v-model="filter.owner" label="Propietario/Owner" :items="owners" item-text="name" return-object clearable></v-select></v-col>
 
                     <v-col cols="4" v-if="filters.available.active"><v-text-field v-model="filter.available" label="Disponible" clearable></v-text-field></v-col>
                     <v-col cols="4" v-if="filters.code.active"><v-text-field v-model="filter.code" label="Codigo" clearable></v-text-field></v-col>
