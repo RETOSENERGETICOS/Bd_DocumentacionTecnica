@@ -46,7 +46,7 @@ export default {
     name: "filters",
     data: () => ({
         panel: 0,
-        docums: [{id: 0, name: 'TODOS'}],
+        docum: [{id: 0, name: 'TODOS'}],
         techs: [{id: 0, name: 'TODOS'}],
         types: [{id: 0, name: 'TODOS'}],
         areas: [{id: 0, name: 'TODOS'}],
