@@ -45,7 +45,7 @@ export default {
         specialKeys: ['docum','tech','type','area','owner'],
         historyHeaders: [
             {text: 'Item', value: 'tool.item'},
-            {text: 'Tipo de documento', value: 'docum.name'},
+            {text: 'Tipo de Documento', value: 'docum.name'},
             {text: 'Fecha', value: 'created_at'},
             {text: 'Ejecutor', value: 'user.email'},
             {text: 'Actividad', value: 'comment'},

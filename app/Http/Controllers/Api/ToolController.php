@@ -191,9 +191,9 @@ class ToolController extends Controller
     private function getValues($values, Tool $tool) {
 //        dd($values, $tool);
         $specialAttributes = ['docum_id' => 'docum','tech_id' => 'tech','type_id' => 'type','area_id' => 'area','owner_id' => 'owner'];
-        $names = ['item' => 'Item','docum_id' => 'Tipo de documento/Document type','tech_id' => 'Tecnologia asociada/Associated technology','type_id' => 'Tipo de archivo/Type of file','area_id' => 'Area asociada/Associated area','owner_id' => 'Propietario/Owner',
-            'available' => 'Disponible/Available','code' => 'Codigo/Code','description' => 'Descripcion/Description','revision' => 'N de revision/No revision',
-            'author' => 'Autor/Author', 'language' => 'Idioma/Lenguage', 'year' => 'Año de publicacion/Year of publication'];
+        $names = ['item' => 'Item','docum_id' => 'Tipo de Documento/Document Type','tech_id' => 'Tecnologia Asociada/Associated Technology','type_id' => 'Tipo de Archivo/Type of File','area_id' => 'Area Asociada/Associated Area','owner_id' => 'Propietario/Owner',
+            'available' => 'Disponible/Available','code' => 'Codigo/Code','description' => 'Descripcion/Description','revision' => 'N de Revision/No Revision',
+            'author' => 'Autor/Author', 'language' => 'Idioma/Lenguage', 'year' => 'Año de Publicacion/Year of Publication'];
         $data = array();
         foreach (array_keys($values) as $key) {
             if (array_key_exists($key, $specialAttributes)) {

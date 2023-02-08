@@ -15,20 +15,20 @@
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="4" v-if="filters.docum.active"><v-select v-model="filter.docum" label="Tipo de documento/Document type" :items="docums" item-text="name" return-object clearable></v-select></v-col>
-                    <v-col cols="4" v-if="filters.tech.active"><v-select v-model="filter.tech" label="Tecnologia asociada/Associated technology" :items="techs" item-text="name" return-object clearable></v-select></v-col>
-                    <v-col cols="4" v-if="filters.type.active"><v-select v-model="filter.type" label="Tipo de archivo/Type of file" :items="types" item-text="name" return-object clearable></v-select></v-col>
-                    <v-col cols="4" v-if="filters.area.active"><v-select v-model="filter.area" label="Area asociada/Associated area" :items="areas" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.docum.active"><v-select v-model="filter.docum" label="Tipo de Documento/Document Type" :items="docums" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.tech.active"><v-select v-model="filter.tech" label="Tecnologia Asociada/Associated Technology" :items="techs" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.type.active"><v-select v-model="filter.type" label="Tipo de Archivo/Type of File" :items="types" item-text="name" return-object clearable></v-select></v-col>
+                    <v-col cols="4" v-if="filters.area.active"><v-select v-model="filter.area" label="Area Asociada/Associated Area" :items="areas" item-text="name" return-object clearable></v-select></v-col>
                     <v-col cols="4" v-if="filters.owner.active"><v-select v-model="filter.owner" label="Propietario/Owner" :items="owners" item-text="name" return-object clearable></v-select></v-col>
 
                     <v-col cols="4" v-if="filters.available.active"><v-text-field v-model="filter.available" label="Disponible" clearable></v-text-field></v-col>
                     <v-col cols="4" v-if="filters.code.active"><v-text-field v-model="filter.code" label="Codigo" clearable></v-text-field></v-col>
                     <v-col cols="4" v-if="filters.description.active"><v-text-field v-model="filter.description" label="Descripcion" clearable></v-text-field></v-col>
-                    <v-col cols="4" v-if="filters.revision.active"><v-text-field v-model="filter.revision" label="Revision" clearable></v-text-field></v-col>
+                    <v-col cols="4" v-if="filters.revision.active"><v-text-field v-model="filter.revision" label="N de Revision" clearable></v-text-field></v-col>
                    
                     <v-col cols="4" v-if="filters.author.active"><v-text-field v-model="filter.author" label="Autor" clearable></v-text-field></v-col>
                     <v-col cols="4" v-if="filters.language.active"><v-text-field v-model="filter.language" label="Idioma" clearable></v-text-field></v-col>
-                    <v-col cols="4" v-if="filters.year.active"><v-text-field v-model="filter.year" label="Año de publicacion" clearable></v-text-field></v-col>
+                    <v-col cols="4" v-if="filters.year.active"><v-text-field v-model="filter.year" label="Año de Publicacion" clearable></v-text-field></v-col>
                     <v-col cols="4" v-if="filters.item.active"><v-text-field v-model="filter.item" label="Item" clearable></v-text-field></v-col>
                     <v-col cols="4" v-if="filters.user.active"><v-select v-model="filter.user" label="Usuario/User" :items="users" item-text="email" return-object clearable></v-select></v-col>
                 </v-row>
@@ -71,7 +71,7 @@ export default {
         },
         historyHeaders: [
             {text: 'Item', value: 'tool.item'},
-            {text: 'Tipo de documento', value: 'docum.name'},
+            {text: 'Tipo de Documento', value: 'docum.name'},
             {text: 'Fecha', value: 'created_at'},
             {text: 'Ejecutor', value: 'user.email'},
             {text: 'Actividad', value: 'comment'},

@@ -17,18 +17,18 @@
                     <v-form v-model="valid">
                         <v-row>
                              <v-col cols="4">
-                                <v-combobox label="Tipo de documento/Document type" v-model="tool.docum" item-text="name" :items="docums" item-value="name" disabled></v-combobox>
+                                <v-combobox label="Tipo de Documento/Document Type" v-model="tool.docum" item-text="name" :items="docums" item-value="name" disabled></v-combobox>
                             </v-col>
                              <v-col cols="4">
-                                <v-combobox label="Tecnologia asociada/Associated technology" v-model="tool.tech" item-text="name" :items="techs" item-value="name" disabled></v-combobox>
+                                <v-combobox label="Tecnologia Asociada/Associated Technology" v-model="tool.tech" item-text="name" :items="techs" item-value="name" disabled></v-combobox>
                             </v-col>
                              <v-col cols="4">
-                                <v-combobox label="Tipo de archivo/Type of file" v-model="tool.type" item-text="name" :items="types" item-value="name" disabled></v-combobox>
+                                <v-combobox label="Tipo de Archivo/Type of File" v-model="tool.type" item-text="name" :items="types" item-value="name" disabled></v-combobox>
                             </v-col>
                         </v-row>
                         <v-row>
                              <v-col cols="4">
-                                <v-combobox label="Area asociada/Associated area" v-model="tool.area" item-text="name" :items="areas" item-value="name" disabled></v-combobox>
+                                <v-combobox label="Area Asociada/Associated Area" v-model="tool.area" item-text="name" :items="areas" item-value="name" disabled></v-combobox>
                             </v-col>
                              <v-col cols="4">
                                 <v-combobox label="Propietario/Owner" v-model="tool.owner" item-text="name" :items="owners" item-value="name" disabled></v-combobox>
@@ -45,7 +45,7 @@
                                 <v-text-field label="Descripcion" v-model="tool.description" :rules="[rules.required]"></v-text-field>
                             </v-col>
                             <v-col cols="4">
-                                <v-text-field label="N de revision" v-model="tool.revision" :rules="[rules.required]"></v-text-field>
+                                <v-text-field label="N de Revision" v-model="tool.revision" :rules="[rules.required]"></v-text-field>
                             </v-col>
                         </v-row>
                         <v-row>
@@ -56,7 +56,7 @@
                                 <v-text-field label="Idioma" v-model="tool.lenguage"></v-text-field>
                             </v-col>
                             <v-col cols="4">
-                                <v-text-field label="Año de publicación" v-model="tool.year"></v-text-field>
+                                <v-text-field label="Año de Publicación" v-model="tool.year"></v-text-field>
                             </v-col>
                             <v-col cols="4">
                                 <file-pond name="documents" ref="documents" label-idle="Archivos" accepted-file-types="application/pdf" :disabled="true"></file-pond>
